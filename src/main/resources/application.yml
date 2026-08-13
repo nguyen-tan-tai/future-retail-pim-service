@@ -3,20 +3,26 @@ spring:
     name: Pim Service
     version: 2026.09.00
   datasource:
-    url: jdbc:postgresql://${PIM_DB_HOST:localhost}:${PIM_DB_PORT:5432}/${PIM_DB_NAME:future-retail}
+    url: jdbc:postgresql://${PIM_DB_HOST:localhost}:${PIM_DB_PORT:5432}/${PIM_DB_NAME:future-retail-pim}
     username: ${PIM_DB_USER:postgres}
     password: ${PIM_DB_PASS:postgres}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+  flyway:
+    locations: classpath:db/migration
+    enabled: true
+    validate-on-migrate: true
+    repair-on-migrate: true
   grpc:
     server:
       port: ${GRPC_PORT:18083}
-jwt:
-  secret: ${JWT_SECRET:411c6dd955e3ba4dd22383ed46ddddaab366008bfedcded5083ec27d4242de82}
+app:
+  security:
+    auth-server-jwks-url: ${AUTH_SERVER_JWKS_URL:http://localhost:18081/oauth2/jwks}
