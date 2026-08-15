@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Pim Service
+    name: pim-service
     version: 2026.09.00
   datasource:
     url: jdbc:postgresql://${PIM_DB_HOST:localhost}:${PIM_DB_PORT:5432}/${PIM_DB_NAME:future-retail-pim}

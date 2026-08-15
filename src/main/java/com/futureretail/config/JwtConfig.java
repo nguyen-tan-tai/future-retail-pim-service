@@ -6,10 +6,10 @@ import com.nimbusds.jose.proc.JWSKeySelector;
 import com.nimbusds.jose.proc.JWSVerificationKeySelector;
 import com.nimbusds.jose.util.DefaultResourceRetriever;
 import com.nimbusds.jwt.proc.DefaultJWTProcessor;
+import java.net.URL;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import java.net.URL;
 
 /**
  * JWT Configuration using RSA256 public key from auth-service JWKS endpoint.
